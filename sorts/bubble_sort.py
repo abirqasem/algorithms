@@ -3,7 +3,7 @@
 # Dumb Bubble sort
 
 """
-procedure bubbleSort( A : list of sortable items )
+`procedure bubbleSort( A : list of sortable items )
     n = length(A)
     repeat
         newn = 0
@@ -15,7 +15,7 @@ procedure bubbleSort( A : list of sortable items )
         end for
         n = newn
     until n = 0
-end procedure
+end procedure`
 
 """
 
