@@ -3,7 +3,8 @@
 # Dumb Bubble sort
 
 """
-`procedure bubbleSort( A : list of sortable items )
+```
+    procedure bubbleSort( A : list of sortable items )
     n = length(A)
     repeat
         newn = 0
@@ -15,8 +16,8 @@
         end for
         n = newn
     until n = 0
-end procedure`
-
+end procedure
+```
 """
 
 
@@ -26,7 +27,6 @@ def buble_sort_basic (unsorted):
     n = len(unsorted)
 
     while True: #repeat
-        # ### interesting []
         ls = 0
         for i in range (1, n):
             if unsorted[i] < unsorted [i-1]:
