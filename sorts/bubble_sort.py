@@ -25,7 +25,8 @@ end procedure
 def buble_sort_basic (unsorted):
 
     n = len(unsorted)
-
+    # The algorithm uses a postcheck outerloop since python does not have repeat
+    # we are simulating by enter anyway, code and then break if condition is met    
     while True: #repeat
         ls = 0
         for i in range (1, n):
