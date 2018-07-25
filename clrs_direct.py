@@ -112,13 +112,15 @@ def BFS (G,s):
 
 def print_path (G, s, v):
     """ does not work """
-
     if v==s:
-        print (s)
-    if VERTEX_PROPS[v]["pie"] == None:
+        print (v)
+    elif VERTEX_PROPS[v]["pie"] == None:
         print (" No path")
-    else: print_path (G, s, VERTEX_PROPS[v]["pie"])
+    else:
+        #print (VERTEX_PROPS[v]["pie"])
+        print_path (G, s, VERTEX_PROPS[v]["pie"])
     return
+
 
 
 
@@ -138,6 +140,6 @@ def main ():
     BFS (G,"s")
     #show_graph_props(G)
     print (VERTEX_PROPS)
-    print_path (G, "s","w")
+    print_path (G, "s","y")
 if __name__ == '__main__':
     main()
