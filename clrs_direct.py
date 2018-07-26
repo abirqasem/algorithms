@@ -141,6 +141,6 @@ def main ():
     BFS (G,"1")
     #show_graph_props(G)
     print (VERTEX_PROPS)
-    print_path (G, "1","5")
+    print_path (G, "1","10")
 if __name__ == '__main__':
     main()
