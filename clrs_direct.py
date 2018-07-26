@@ -113,12 +113,13 @@ def BFS (G,s):
 def print_path (G, s, v):
     """ does not work """
     if v==s:
-        print (v)
+        print (s)
     elif VERTEX_PROPS[v]["pie"] == None:
         print (" No path")
     else:
         #print (VERTEX_PROPS[v]["pie"])
         print_path (G, s, VERTEX_PROPS[v]["pie"])
+        print (v)
     return
 
 
@@ -132,14 +133,14 @@ def main ():
 
 
 
-    G= init_graph_as_adjlist ("/Volumes/disk 1/codeblogs/code-snippets/logdown/kormen1.txt")
+    G= init_graph_as_adjlist ("kormen0.txt")
     #print (G)
     #show_graph_props (G)
     #print (make_vertex_string ("5"))
     #print(VERTEX_PROPS)
-    BFS (G,"s")
+    BFS (G,"1")
     #show_graph_props(G)
     print (VERTEX_PROPS)
-    print_path (G, "s","y")
+    print_path (G, "1","5")
 if __name__ == '__main__':
     main()
