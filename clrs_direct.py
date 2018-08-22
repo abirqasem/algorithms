@@ -16,7 +16,70 @@ TODO:
 
 """
 
-import sys
+import sys, numpy
+
+class Graph:
+    """ Reprsents a graph as an adjacency set and some of its basic functions """
+
+    def __init__ (self, data_source):
+        g = {}
+        #TODO: we may to make it generic for any data source for now just text file
+        f=open(data_source, "r")
+        lines =f.readlines()
+        for line in lines:
+            # every  vertices read in
+            v0, v1 = line.split() # unpack them
+            if v0 in g:
+                if not (v1 in g [v0]):
+                    g[v0].append (v1)
+            else:
+                g[v0] = [v1]
+            if v1 in g:
+                if not (v0 in g [v1]):
+                    g[v1].append (v0)
+            else:
+                g[v1] = [v0]
+
+        self.graph = g
+        return
+
+    def show (self):
+        print(self.graph)
+        return
+
+
+    def get_matrix (self):
+        # there appears to be a bug
+        adjlist = self.graph
+        i =0
+        index_map = {}
+        for v in adjlist:
+            index_map [v]=i
+            i=i+1
+
+        size = len(adjlist)
+        mat = numpy.zeros ([size, size])
+
+        for v0 in adjlist:
+            for v1 in adjlist[v0]:
+                print (v0, v1)
+                #print (index_map[v0], index_map[v1])
+                #mat [v0, v1] =1
+        return (mat,index_map)
+
+
+
+
+
+
+
+
+
+
+########################### End Class Graph ###########################################
+
+
+
 
 VERTEX_PROPS = {} # key is vertex label and values are color etc.
 
@@ -58,11 +121,11 @@ def show_graph_props (G):
     print (graph_string)
 
 
-def init_graph_as_adjlist (ds):
+def init_graph_as_adjlist (datasource):
 
     g = {}
 
-    f=open(ds, "r")
+    f=open(datasource, "r")
     lines =f.readlines()
     for line in lines:
         # every  vertices read in
@@ -117,7 +180,6 @@ def print_path (G, s, v):
     elif VERTEX_PROPS[v]["pie"] == None:
         print (" No path")
     else:
-        #print (VERTEX_PROPS[v]["pie"])
         print_path (G, s, VERTEX_PROPS[v]["pie"])
         print (v)
     return
@@ -130,17 +192,19 @@ def print_path (G, s, v):
 
 def main ():
 
-
-
-
-    G= init_graph_as_adjlist ("kormen0.txt")
+    #G= init_graph_as_adjlist ("kormen1.txt")
     #print (G)
+
+
+    G= Graph ("kormen0.txt")
+    G.show()
+    print(G.get_matrix())
     #show_graph_props (G)
     #print (make_vertex_string ("5"))
     #print(VERTEX_PROPS)
-    BFS (G,"1")
+    #BFS (G,"1")
     #show_graph_props(G)
-    print (VERTEX_PROPS)
-    print_path (G, "1","10")
+    #print (VERTEX_PROPS)
+    #print_path (G, "1","10")
 if __name__ == '__main__':
     main()
